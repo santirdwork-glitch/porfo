@@ -265,6 +265,41 @@
         }
         .categoria-btn.activo { color: #ffffff; }
         .categoria-btn:hover:not(.activo) { color: rgba(255,255,255,0.75); }
+
+        /* SUBMENÚ FILTROS DISEÑO */
+        .filtro-diseno-wrapper {
+            position: relative; z-index: 10;
+            padding: 0 60px 60px 100px;
+            display: flex; justify-content: center; align-items: center;
+            gap: 10px;
+        }
+        .filtro-btn {
+            position: relative;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 100px;
+            padding: 11px 26px;
+            cursor: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: color 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .filtro-btn:hover:not(.activo) {
+            color: rgba(255,255,255,0.8);
+            border-color: rgba(255,255,255,0.28);
+        }
+        .filtro-btn.activo {
+            color: #ffffff;
+            background: #e44800;
+            border-color: #e44800;
+            box-shadow: 0 0 22px rgba(228,72,0,0.45);
+            transform: translateY(-1px);
+        }
+
         /* VISTA PROYECTO */
         #proyecto-view {
             position: fixed; inset: 0; z-index: 800;
@@ -779,6 +814,13 @@
             </div>
         </div>
 
+        <!-- SUBMENÚ FILTROS (solo diseño) -->
+        <div class="filtro-diseno-wrapper" id="filtroDisenoWrapper">
+            <button class="filtro-btn" data-filtro="editorial">Editorial</button>
+            <button class="filtro-btn" data-filtro="publicidad">Publicidad</button>
+            <button class="filtro-btn" data-filtro="branding">Branding</button>
+        </div>
+
         <!-- GALERÍA -->
         <div class="bloque-cuadricula" id="bloque-galeria">
             <div class="grid-outer">
@@ -873,7 +915,7 @@
     // Proyectos de DISEÑO (por defecto)
     const proyectosDiseno = [
         {
-            url: 'fotos/evo.png',
+            url: 'fotos/poster.png',
             titulo: 'Nombre<br><em>Proyecto</em>',
             tags: ['Branding', 'Identidad', 'Diseño'],
             descripcion: 'Descripción breve del proyecto de diseño. <strong>Frase destacada.</strong>',
@@ -1114,6 +1156,15 @@
     let categoriaActual = 'diseno';
     let proyectosData = categorias[categoriaActual];
 
+    // Filtros del submenú de Diseño
+    // clave -> array de números de proyecto (1-based, según campo "indice") que deben permanecer visibles
+    const filtroDisenoMap = {
+        editorial: [1, 2],
+        publicidad: [3, 6],
+        branding: [4, 5]
+    };
+    let filtrosDisenoActivos = new Set();
+
     // ====================================================================
     // WEBGL
     // ====================================================================
@@ -1347,6 +1398,7 @@
         });
         tlSopla.to(document.getElementById('bloque-galeria'),{opacity:0,duration:1.0,ease:'power2.in'},0.6);
         tlSopla.to(document.getElementById('categoriaSelectorWrapper'),{opacity:0,duration:0.8,ease:'power2.in'},0.6);
+        tlSopla.to(document.getElementById('filtroDisenoWrapper'),{opacity:0,duration:0.8,ease:'power2.in'},0.6);
         tlSopla.to(flipImgWrapper,{left:0,top:0,width:'100vw',height:'100vh',borderRadius:'0px',duration:1.6,ease:'power4.inOut'},0.4);
         tlSopla.call(()=>{
             proyectoView.classList.add('visible');
@@ -1373,7 +1425,14 @@
         soplables.forEach(el=>{gsap.to(el,{x:0,y:0,rotate:0,opacity:1,filter:'blur(0px)',duration:1.1,ease:'power3.out',delay:0.3});});
         gsap.to(document.getElementById('bloque-galeria'),{opacity:1,duration:0.8,ease:'power2.out',delay:0.3});
         gsap.to(document.getElementById('categoriaSelectorWrapper'),{opacity:1,duration:0.8,ease:'power2.out',delay:0.3});
-        document.querySelectorAll('.grid-item').forEach(it=>{gsap.to(it,{x:0,y:0,rotate:0,opacity:1,filter:'blur(0px)',duration:0.9,ease:'power3.out',delay:0.4});});
+        gsap.to(document.getElementById('filtroDisenoWrapper'),{opacity: categoriaActual==='diseno' ? 1 : 0,duration:0.8,ease:'power2.out',delay:0.3});
+        document.querySelectorAll('.grid-item').forEach(it=>{
+            const st = getCardState(it);
+            const debeEstarOculto = st && st.ocultoPorFiltro;
+            if (!debeEstarOculto) {
+                gsap.to(it,{x:0,y:0,rotate:0,opacity:1,scale:1,filter:'blur(0px)',duration:0.9,ease:'power3.out',delay:0.4});
+            }
+        });
         setTimeout(()=>{proyectoAbierto=false;},1200);
     }
 
@@ -1383,7 +1442,7 @@
     const cardStates = new Map();
     function getCardState(item) {
         if (!cardStates.has(item)) {
-            cardStates.set(item, { rotX:0,rotY:0,targetRotX:0,targetRotY:0,scale:1,targetScale:1,liftZ:0,targetLiftZ:0,isHovered:false });
+            cardStates.set(item, { rotX:0,rotY:0,targetRotX:0,targetRotY:0,scale:1,targetScale:1,liftZ:0,targetLiftZ:0,isHovered:false,ocultoPorFiltro:false });
         }
         return cardStates.get(item);
     }
@@ -1418,17 +1477,18 @@
         const item = document.createElement('div');
         item.className = 'grid-item';
         item.style.transformStyle = 'preserve-3d';
+        item.dataset.indice = data.indice; // '01', '02', etc.
         item.innerHTML = `<div class="grid-item-shell"><img src="${data.url}" alt="${data.titulo.replace(/<[^>]+>/g,'')}"><div class="grid-item-light"></div></div><div class="grid-item-border"></div><span class="grid-year-badge">${data.year}</span>`;
         const state = getCardState(item);
         const lightEl = item.querySelector('.grid-item-light');
 
         item.addEventListener('mouseenter', () => {
-            if (proyectoAbierto) return;
+            if (proyectoAbierto || state.ocultoPorFiltro) return;
             state.isHovered=true; state.targetScale=HOVER_SCALE; state.targetLiftZ=HOVER_LIFT;
             item.classList.add('card-hovered'); cursor.classList.add('expandido');
         });
         item.addEventListener('mousemove', e => {
-            if (proyectoAbierto) return;
+            if (proyectoAbierto || state.ocultoPorFiltro) return;
             const rect=item.getBoundingClientRect();
             const x=e.clientX-rect.left, y=e.clientY-rect.top;
             const cx=rect.width/2, cy=rect.height/2;
@@ -1438,11 +1498,11 @@
             lightEl.style.background=`radial-gradient(circle 55% at ${pX}% ${pY}%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.04) 40%, transparent 68%)`;
         });
         item.addEventListener('mouseleave', () => {
-            if (proyectoAbierto) return;
+            if (proyectoAbierto || state.ocultoPorFiltro) return;
             state.isHovered=false; state.targetRotX=0; state.targetRotY=0; state.targetScale=1; state.targetLiftZ=0;
             item.classList.remove('card-hovered'); cursor.classList.remove('expandido');
         });
-        item.addEventListener('click', e => { e.preventDefault(); abrirProyecto(item, data); });
+        item.addEventListener('click', e => { e.preventDefault(); if(state.ocultoPorFiltro) return; abrirProyecto(item, data); });
         return item;
     }
 
@@ -1468,6 +1528,10 @@
             }, { threshold: 0.05 });
             obs.observe(gridContainer);
         }
+        // al renderizar de nuevo, si estamos en diseño, aplicar el filtro activo sin animación de entrada duplicada
+        if (categoriaActual === 'diseno') {
+            aplicarFiltroDiseno(true);
+        }
     }
 
     renderGrid(proyectosData, false);
@@ -1477,7 +1541,73 @@
     // ====================================================================
     const categoriaSelector = document.getElementById('categoriaSelector');
     const categoriaBtns = document.querySelectorAll('.categoria-btn');
+    const filtroDisenoWrapper = document.getElementById('filtroDisenoWrapper');
+    const filtroBtns = document.querySelectorAll('.filtro-btn');
     let cambiandoCategoria = false;
+
+    // Aplica el filtro de diseño activo a las tarjetas actuales de la grid.
+    // instant = true evita la animación de "esfumado" (usado al re-renderizar la grid)
+    function aplicarFiltroDiseno(instant) {
+        const gridItems = document.querySelectorAll('.grid-item');
+        let keepSet = null;
+        if (filtrosDisenoActivos.size > 0) {
+            keepSet = new Set();
+            filtrosDisenoActivos.forEach(f => (filtroDisenoMap[f] || []).forEach(n => keepSet.add(n)));
+        }
+        gridItems.forEach(item => {
+            const state = getCardState(item);
+            const numProyecto = parseInt(item.dataset.indice, 10);
+            const visible = !keepSet || keepSet.has(numProyecto);
+            state.ocultoPorFiltro = !visible;
+            if (!visible) {
+                item.classList.remove('card-hovered');
+                cursor.classList.remove('expandido');
+                state.isHovered = false; state.targetRotX = 0; state.targetRotY = 0; state.targetScale = 1; state.targetLiftZ = 0;
+                if (instant) {
+                    gsap.set(item, { opacity: 0, scale: 0.85, y: 20, filter: 'blur(6px)', pointerEvents: 'none' });
+                } else {
+                    gsap.to(item, { opacity: 0, scale: 0.85, y: 20, filter: 'blur(6px)', duration: 0.5, ease: 'power2.in', onComplete: () => { item.style.pointerEvents = 'none'; } });
+                }
+            } else {
+                item.style.pointerEvents = 'auto';
+                if (instant) {
+                    gsap.set(item, { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' });
+                } else {
+                    gsap.to(item, { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 0.55, ease: 'power3.out', delay: 0.05 });
+                }
+            }
+        });
+    }
+
+    function resetFiltroDiseno() {
+        filtrosDisenoActivos.clear();
+        filtroBtns.forEach(b => b.classList.remove('activo'));
+    }
+
+    function actualizarSubmenuVisibilidad(mostrar) {
+        if (!filtroDisenoWrapper) return;
+        if (mostrar) {
+            filtroDisenoWrapper.style.display = 'flex';
+            gsap.fromTo(filtroDisenoWrapper, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+        } else {
+            gsap.to(filtroDisenoWrapper, { opacity: 0, y: -8, duration: 0.3, ease: 'power2.in', onComplete: () => { filtroDisenoWrapper.style.display = 'none'; } });
+        }
+    }
+
+    filtroBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (categoriaActual !== 'diseno' || proyectoAbierto || cambiandoCategoria) return;
+            const key = btn.dataset.filtro;
+            if (filtrosDisenoActivos.has(key)) {
+                filtrosDisenoActivos.delete(key);
+                btn.classList.remove('activo');
+            } else {
+                filtrosDisenoActivos.add(key);
+                btn.classList.add('activo');
+            }
+            aplicarFiltroDiseno(false);
+        });
+    });
 
     function cambiarCategoria(nueva) {
         if (cambiandoCategoria || nueva === categoriaActual || proyectoAbierto) return;
@@ -1487,6 +1617,9 @@
 
         categoriaSelector.setAttribute('data-activo', nueva);
         categoriaBtns.forEach(b => b.classList.toggle('activo', b.dataset.categoria === nueva));
+
+        resetFiltroDiseno();
+        actualizarSubmenuVisibilidad(nueva === 'diseno');
 
         const gridItems = document.querySelectorAll('.grid-item');
         gsap.to(gridItems, {
