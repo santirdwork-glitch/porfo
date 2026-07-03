@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aviso Legal · Estudio Sants</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#000000;
+    --white:#ffffff;
+    --orange:#e44800;
+    --muted:rgba(255,255,255,0.55);
+    --muted-2:rgba(255,255,255,0.32);
+    --line:rgba(255,255,255,0.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Space Grotesk', sans-serif;
+    overflow-x:hidden;
+  }
+
+  /* ---------- fondo ambiental ---------- */
+  body::before{
+    content:'';
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 900px 500px at 12% 0%, rgba(228,72,0,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 40%, rgba(228,72,0,0.06) 0%, transparent 65%);
+  }
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 60px;
+    background:rgba(0,0,0,0.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-logo{
+    font-family:'Unbounded', sans-serif; font-weight:800; font-size:14px;
+    letter-spacing:-0.02em; text-transform:uppercase; color:var(--white);
+    text-decoration:none;
+  }
+  .topbar-back{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Grotesk', sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:0.18em; text-transform:uppercase; color:var(--muted);
+    text-decoration:none; transition:color 0.3s ease;
+  }
+  .topbar-back:hover{ color:var(--orange); }
+  .topbar-back::before{ content:'←'; font-size:14px; }
+
+  /* ---------- hero ---------- */
+  .legal-hero{
+    position:relative; z-index:1;
+    padding:110px 100px 70px;
+    border-bottom:1px solid var(--line);
+  }
+  .legal-eyebrow{
+    font-family:'Unbounded', sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--orange);
+    margin-bottom:26px; display:flex; align-items:center; gap:14px;
+  }
+  .legal-eyebrow::before{ content:''; width:24px; height:2px; background:var(--orange); display:block; }
+  .legal-title{
+    font-family:'DM Serif Display', serif; font-weight:400;
+    font-size:clamp(40px, 5vw, 76px); line-height:0.98;
+    letter-spacing:-0.02em; color:var(--white); max-width:900px;
+  }
+  .legal-title em{ font-style:italic; color:var(--orange); }
+  .legal-sub{
+    margin-top:26px; max-width:640px;
+    font-size:15px; line-height:1.8; color:var(--muted);
+  }
+
+  /* ---------- layout ---------- */
+  .legal-wrap{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:280px 1fr;
+    gap:0; padding:0 100px;
+  }
+  @media (max-width:900px){
+    .legal-wrap{ grid-template-columns:1fr; padding:0 24px; }
+  }
+
+  /* ---------- nav lateral ---------- */
+  .legal-nav{
+    position:sticky; top:96px; align-self:start;
+    padding:70px 40px 70px 0;
+    display:flex; flex-direction:column; gap:4px;
+  }
+  @media (max-width:900px){ .legal-nav{ position:static; padding:40px 0 10px; } }
+  .legal-nav-label{
+    font-family:'Unbounded', sans-serif; font-size:9px; font-weight:700;
+    letter-spacing:0.35em; text-transform:uppercase; color:var(--muted-2);
+    margin-bottom:18px;
+  }
+  .legal-nav a{
+    font-family:'Space Grotesk', sans-serif; font-size:13px; font-weight:600;
+    color:var(--muted); text-decoration:none; padding:12px 0;
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    transition:color 0.3s ease, padding-left 0.3s ease;
+  }
+  .legal-nav a span.n{
+    font-family:'Unbounded', sans-serif; font-size:10px; color:var(--muted-2);
+  }
+  .legal-nav a:hover{ color:var(--white); padding-left:6px; }
+  .legal-nav a:hover span.n{ color:var(--orange); }
+
+  /* ---------- contenido ---------- */
+  .legal-content{
+    padding:70px 0 140px;
+    border-left:1px solid var(--line);
+    padding-left:60px;
+  }
+  @media (max-width:900px){ .legal-content{ border-left:none; padding-left:0; } }
+
+  .legal-section{
+    padding-bottom:70px; margin-bottom:70px;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:110px;
+  }
+  .legal-section:last-child{ border-bottom:none; margin-bottom:0; }
+
+  .legal-section-num{
+    font-family:'Unbounded', sans-serif; font-weight:900; font-size:13px;
+    color:var(--orange); letter-spacing:0.1em; margin-bottom:14px; display:block;
+  }
+  .legal-section h2{
+    font-family:'DM Serif Display', serif; font-weight:400;
+    font-size:clamp(26px, 2.6vw, 38px); letter-spacing:-0.01em;
+    color:var(--white); margin-bottom:24px; line-height:1.1;
+  }
+  .legal-section h3{
+    font-family:'Unbounded', sans-serif; font-weight:700; font-size:13px;
+    letter-spacing:0.06em; color:var(--white); margin:30px 0 14px;
+  }
+  .legal-section p{
+    font-size:15px; line-height:1.9; color:var(--muted); margin-bottom:16px; max-width:760px;
+  }
+  .legal-section p strong{ color:var(--white); font-weight:700; }
+  .legal-section ul{ margin:8px 0 20px 0; max-width:760px; }
+  .legal-section li{
+    font-size:15px; line-height:1.85; color:var(--muted);
+    padding-left:22px; position:relative; margin-bottom:10px;
+  }
+  .legal-section li::before{
+    content:''; position:absolute; left:0; top:10px;
+    width:6px; height:6px; border-radius:50%; background:var(--orange);
+  }
+  .legal-section li strong{ color:var(--white); font-weight:700; }
+
+  .legal-callout{
+    max-width:760px;
+    border-left:2px solid var(--orange);
+    padding:18px 26px;
+    margin:26px 0;
+    background:rgba(228,72,0,0.06);
+  }
+  .legal-callout p{ margin:0; font-family:'DM Serif Display', serif; font-style:italic;
+    font-size:17px; line-height:1.6; color:rgba(255,255,255,0.85); }
+
+  .legal-data-card{
+    max-width:520px; margin:22px 0 30px;
+    border:1px solid var(--line); border-radius:4px;
+    padding:26px 30px;
+    background:rgba(255,255,255,0.02);
+  }
+  .legal-data-row{
+    display:flex; justify-content:space-between; gap:20px;
+    padding:12px 0; border-bottom:1px solid var(--line);
+    font-size:13px;
+  }
+  .legal-data-row:last-child{ border-bottom:none; }
+  .legal-data-row span:first-child{
+    font-family:'Unbounded', sans-serif; font-size:9px; font-weight:700;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-2);
+  }
+  .legal-data-row span:last-child{ color:var(--white); font-weight:600; text-align:right; }
+
+  .legal-table{ width:100%; max-width:760px; border-collapse:collapse; margin:22px 0 30px; }
+  .legal-table th{
+    font-family:'Unbounded', sans-serif; font-size:9px; font-weight:700;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-2);
+    text-align:left; padding:0 0 14px; border-bottom:1px solid var(--line);
+  }
+  .legal-table td{
+    font-size:13.5px; color:var(--muted); padding:16px 20px 16px 0;
+    border-bottom:1px solid var(--line); vertical-align:top; line-height:1.6;
+  }
+  .legal-table td:first-child{ color:var(--white); font-weight:600; white-space:nowrap; }
+
+  .legal-updated{
+    font-size:11px; letter-spacing:0.05em; color:var(--muted-2); margin-top:-6px; margin-bottom:6px;
+  }
+
+  /* ---------- footer simple ---------- */
+  .legal-footer{
+    position:relative; z-index:1;
+    padding:50px 100px; border-top:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+  }
+  @media (max-width:900px){ .legal-footer{ padding:40px 24px; } }
+  .legal-footer-copy{ font-size:11px; color:var(--muted-2); }
+  .legal-footer-copy span{ color:rgba(228,72,0,0.6); }
+  .legal-footer-links{ display:flex; gap:24px; }
+  .legal-footer-links a{
+    font-family:'Space Grotesk', sans-serif; font-size:10px; font-weight:600;
+    letter-spacing:0.05em; color:var(--muted); text-decoration:none;
+  }
+  .legal-footer-links a:hover{ color:var(--orange); }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo">Estudio Sants</a>
+    <a href="index.html" class="topbar-back">Volver al inicio</a>
+  </div>
+
+  <header class="legal-hero">
+    <div class="legal-eyebrow">Información legal</div>
+    <h1 class="legal-title">Aviso Legal, <em>Privacidad</em><br>y Cookies</h1>
+    <p class="legal-sub">Toda la información sobre quién está detrás de este sitio, cómo tratamos los datos que puedas generar al visitarlo y en qué condiciones puedes usar los contenidos publicados.</p>
+  </header>
+
+  <div class="legal-wrap">
+    <nav class="legal-nav">
+      <div class="legal-nav-label">Índice</div>
+      <a href="#aviso-legal"><span>Aviso Legal</span><span class="n">01</span></a>
+      <a href="#privacidad"><span>Privacidad (RGPD)</span><span class="n">02</span></a>
+      <a href="#cookies"><span>Política de Cookies</span><span class="n">03</span></a>
+      <a href="#copyright"><span>Copyright y Licencia</span><span class="n">04</span></a>
+    </nav>
+
+    <main class="legal-content">
+
+      <!-- 01 · AVISO LEGAL -->
+      <section class="legal-section" id="aviso-legal">
+        <span class="legal-section-num">01</span>
+        <h2>Aviso Legal</h2>
+        <p>En cumplimiento de la <strong>Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE)</strong>, se informa a continuación de los datos identificativos del titular de este sitio web, dado que a través del mismo se ofrecen y promocionan servicios profesionales.</p>
+
+        <h3>Datos identificativos del titular</h3>
+        <div class="legal-data-card">
+          <div class="legal-data-row"><span>Titular</span><span>Santiago Rosales Durán</span></div>
+          <div class="legal-data-row"><span>NIF</span><span>77484155F</span></div>
+          <div class="legal-data-row"><span>Dirección</span><span>Rúa Hernán Cortés, 6</span></div>
+          <div class="legal-data-row"><span>Contacto</span><span>hola@estudiosants.com</span></div>
+          <div class="legal-data-row"><span>Actividad</span><span>Servicios de diseño y dirección creativa</span></div>
+        </div>
+
+        <h3>Objeto</h3>
+        <p>El presente sitio web tiene como finalidad mostrar el trabajo, los servicios y la actividad profesional del titular, así como facilitar un canal de contacto con potenciales clientes. La navegación por este sitio atribuye la condición de usuario e implica la aceptación de las condiciones aquí descritas.</p>
+
+        <h3>Propiedad intelectual</h3>
+        <p>El diseño del sitio web, los textos, imágenes, logotipos, iconos y demás contenidos son propiedad del titular o se utilizan con la debida autorización, salvo indicación expresa en contrario. Queda prohibida su reproducción total o parcial sin permiso previo, salvo en los términos recogidos en el apartado de <a href="#copyright" style="color:var(--orange); text-decoration:none;">Copyright y Licencia</a>.</p>
+      </section>
+
+      <!-- 02 · PRIVACIDAD -->
+      <section class="legal-section" id="privacidad">
+        <span class="legal-section-num">02</span>
+        <h2>Política de Privacidad</h2>
+        <p>De conformidad con el <strong>Reglamento (UE) 2016/679, General de Protección de Datos (RGPD)</strong>, y la LOPDGDD, se informa de que el responsable del tratamiento de los datos que pudieran recabarse a través de esta web es Santiago Rosales Durán, con NIF 77484155F y domicilio en Rúa Hernán Cortés, 6.</p>
+
+        <h3>¿Qué datos se recopilan?</h3>
+        <p>Este sitio web no dispone de formularios de contacto ni de registro, por lo que <strong>no se recopila de forma directa ningún dato personal</strong> facilitado voluntariamente por el usuario. Cualquier dato que pueda tratarse procede únicamente del uso de cookies y herramientas de analítica, descrito en la sección siguiente.</p>
+
+        <h3>Finalidad y legitimación</h3>
+        <ul>
+          <li><strong>Analítica web:</strong> comprender cómo se navega por el sitio para mejorar su contenido y experiencia de uso, sobre la base del consentimiento del usuario.</li>
+          <li><strong>Comunicaciones directas:</strong> si el usuario escribe voluntariamente a la dirección de contacto (hola@estudiosants.com), sus datos se tratarán únicamente para responder a esa consulta, sobre la base del interés legítimo en atender la solicitud.</li>
+        </ul>
+
+        <h3>Conservación y cesión de datos</h3>
+        <p>Los datos derivados de la analítica se conservarán durante el plazo establecido por la propia herramienta utilizada. No se cederán datos a terceros salvo obligación legal, exceptuando a los proveedores tecnológicos necesarios para el funcionamiento del sitio (por ejemplo, el proveedor de alojamiento o de analítica), que actúan como encargados del tratamiento.</p>
+
+        <h3>Derechos del usuario</h3>
+        <p>Puedes ejercer tus derechos de <strong>acceso, rectificación, supresión, oposición, limitación y portabilidad</strong> escribiendo a hola@estudiosants.com, indicando el derecho que deseas ejercer y adjuntando copia de un documento que acredite tu identidad.</p>
+      </section>
+
+      <!-- 03 · COOKIES -->
+      <section class="legal-section" id="cookies">
+        <span class="legal-section-num">03</span>
+        <h2>Política de Cookies</h2>
+        <p>Una cookie es un pequeño archivo que se almacena en el navegador del usuario al visitar una web, y que permite, entre otras cosas, recordar preferencias o recopilar información estadística sobre la navegación.</p>
+
+        <div class="legal-callout">
+          <p>Este sitio utiliza <strong style="color:var(--orange); font-style:normal;">Google Analytics</strong> para obtener estadísticas anónimas de uso y visitas, con el fin de mejorar el contenido y funcionamiento de la web.</p>
+        </div>
+
+        <h3>Cookies utilizadas</h3>
+        <table class="legal-table">
+          <tr><th>Cookie</th><th>Titularidad</th><th>Finalidad</th></tr>
+          <tr>
+            <td>_ga, _ga_*, _gid</td>
+            <td>Google LLC (terceros)</td>
+            <td>Distinguir usuarios y sesiones para generar estadísticas de uso agregadas y anónimas del sitio a través de Google Analytics.</td>
+          </tr>
+        </table>
+
+        <h3>Cómo gestionar las cookies</h3>
+        <p>Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo mediante la configuración de tu navegador. Desactivar las cookies analíticas no impide la navegación por el sitio, pero puede limitar la información disponible para mejorar el servicio.</p>
+        <ul>
+          <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies</li>
+          <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies y datos del sitio</li>
+          <li><strong>Safari:</strong> Preferencias → Privacidad</li>
+        </ul>
+
+        <p style="margin-top:26px; font-size:13px; color:var(--muted-2);">Si en el futuro se incorporan nuevas herramientas de analítica o de terceros, esta política se actualizará para reflejar dicho cambio y, en su caso, se solicitará el consentimiento correspondiente mediante un aviso o banner de cookies.</p>
+      </section>
+
+      <!-- 04 · COPYRIGHT -->
+      <section class="legal-section" id="copyright">
+        <span class="legal-section-num">04</span>
+        <h2>Copyright y Licencia</h2>
+        <p>© 2026 <strong>Santiago Rosales Durán — Estudio Sants</strong>. Todos los derechos reservados, salvo que se indique lo contrario en un contenido concreto.</p>
+        <p>Los trabajos, imágenes, textos y proyectos mostrados en este sitio son creaciones originales del titular. Se comparten aquí con fines de difusión profesional y de portfolio.</p>
+
+        <h3>Condiciones de uso</h3>
+        <ul>
+          <li>Está permitida la <strong>visualización y el enlace</strong> a los contenidos de este sitio citando siempre la autoría y el origen.</li>
+          <li>No está permitida la <strong>reproducción, distribución comercial o modificación</strong> de los proyectos, imágenes o textos sin autorización previa y expresa del titular.</li>
+          <li>Cualquier uso no contemplado en este aviso deberá consultarse escribiendo a hola@estudiosants.com.</li>
+        </ul>
+
+        <div class="legal-callout">
+          <p>Este sitio y sus contenidos se protegen bajo licencia <strong style="color:var(--orange); font-style:normal;">Creative Commons Reconocimiento – No Comercial – Sin Obra Derivada (CC BY-NC-ND 4.0)</strong>, salvo indicación distinta en un proyecto concreto.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="legal-footer">
+    <div class="legal-footer-copy">© 2026 <span>Estudio Sants</span> — Todos los derechos reservados</div>
+    <div class="legal-footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="#privacidad">Privacidad</a>
+      <a href="#cookies">Cookies</a>
+      <a href="#aviso-legal">Aviso Legal</a>
+    </div>
+  </footer>
+
+</body>
+</html>
