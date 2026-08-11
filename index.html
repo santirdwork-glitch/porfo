@@ -708,11 +708,10 @@
         .footer-legal-copy span { color: rgba(228,72,0,0.55); }
         .footer-legal-links { display: flex; gap: 26px; }
         .footer-legal-link {
-    font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600;
-    letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.16);
-    cursor: none; transition: color 0.3s ease;
-    text-decoration: none;
-}
+            font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600;
+            letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.16);
+            cursor: none; transition: color 0.3s ease;
+            text-decoration: none;
         }
         .footer-legal-link:hover { color: rgba(255,255,255,0.45); }
 
@@ -962,6 +961,7 @@
             <button class="filtro-btn" data-filtro="editorial">Editorial</button>
             <button class="filtro-btn" data-filtro="publicidad">Publicidad</button>
             <button class="filtro-btn" data-filtro="branding">Branding</button>
+            <button class="filtro-btn" data-filtro="web">Web</button>
         </div>
 
         <!-- GALERÍA -->
@@ -1043,8 +1043,8 @@
         <div class="footer-legal">
             <div class="footer-legal-copy">© 2026 <span>Estudio Sants</span> — Todos los derechos reservados</div>
             <div class="footer-legal-links">
-                <span class="footer-legal-link">Privacidad</span>
-                <span class="footer-legal-link">Cookies</span>
+                <a class="footer-legal-link" href="privacidad.html">Privacidad</a>
+                <a class="footer-legal-link" href="cookies.html">Cookies</a>
                 <a class="footer-legal-link" href="legal.html">Aviso Legal</a>
             </div>
         </div>
@@ -1071,8 +1071,8 @@ const proyectosDiseno = [
             { label: 'Cliente', valor: 'Bicho Verde Tattoo' },
         ],
         galeria: [
-            { url: 'fotos/poster2.png', caption: 'Cartel 1 — composición geométrica con formas de sol y montaña' },
-            { url: 'fotos/poster3.png', caption: 'Cartel 2 — figura totémica en degradado rojo' },
+            { url: 'fotos/poster2.png', caption: 'Cartel 1 — figura totémica en degradado rojo' },
+            { url: 'fotos/poster3.png', caption: 'Cartel 2 — composición geométrica con formas de sol y montaña' },
             { url: 'fotos/poster.png', caption: 'Ambos carteles expuestos en el escaparate del estudio' },
         ]
     },
@@ -1091,8 +1091,8 @@ const proyectosDiseno = [
         ],
         galeria: [
             { url: 'fotos/pegatina.png', caption: 'Cartel principal — tipografía superpuesta sobre fondo violeta' },
-            { url: 'fotos/pegatina2.png', caption: 'Versión alternativa para redes' },
-            { url: 'fotos/pegatina.png', caption: 'Detalle de la composición tipográfica' },
+            { url: 'fotos/pegatina2.png', caption: 'Versión alternativa' },
+            { url: 'fotos/pegatina.png', caption: 'Juntos' },
         ]
     },
     {
@@ -1109,8 +1109,8 @@ const proyectosDiseno = [
             { label: 'Cliente', valor: 'Misto Magazine' },
         ],
         galeria: [
-            { url: 'fotos/misto1.jpg', caption: 'Portada 1 — silueta de tiburón sobre rojo' },
-            { url: 'fotos/misto2.jpg', caption: 'Portada 2 — figura en movimiento sobre azul' },
+            { url: 'fotos/misto1.jpg', caption: 'Portada 1 — figura en movimiento sobre azul' },
+            { url: 'fotos/misto2.jpg', caption: 'Portada 2 — silueta de tiburón sobre rojo' },
             { url: 'fotos/misto3.jpg', caption: 'Portada 3 — perfil recortado sobre amarillo' },
         ]
     },
@@ -1166,9 +1166,47 @@ const proyectosDiseno = [
             { label: 'Cliente', valor: 'Varios (Fiverr)' },
         ],
         galeria: [
-            { url: 'poner nombre imagen aqui', caption: 'Etiqueta — Nektar Homemade Sangría' },
-            { url: 'poner nombre imagen aqui', caption: 'Etiqueta — proyecto Fiverr 2' },
-            { url: 'poner nombre imagen aqui', caption: 'Etiqueta — proyecto Fiverr 3' },
+            { url: 'fotos/sangria.png', caption: 'Etiqueta — Nektar Homemade Sangría' },
+            { url: 'fotos/auhome.png', caption: 'Etiqueta — Producto Aromaterapia' },
+            { url: 'fotos/vino.png', caption: 'Etiqueta — Vino' },
+        ]
+    },
+    {
+        url: 'PON-NOMBRE-IMAGEN-AQUI.png',
+        titulo: 'Talent<br><em>Reload</em>',
+        tags: ['Diseño Web', 'Branding', 'Tipografía'],
+        descripcion: 'Rebranding digital para una agencia de representación de creadores de contenido. <strong>De web obsoleta a propuesta agresiva.</strong>',
+        stats: [{ valor: '1', label: 'Pantalla' }, { valor: 'Web', label: 'Formato' }, { valor: '2026', label: 'Producción' }],
+        indice: '07', year: '2026',
+        intro: 'Rebranding web para una agencia de representación de creadores de contenido de tamaño medio, cuya web anterior había quedado desfasada.',
+        descLarga: '<p>El cliente llegó con un problema claro: su web tenía años y ya no representaba lo que la agencia había llegado a ser. En vez de proponer un lavado de cara suave, planteamos una versión mucho más contundente, con tipografía a gran escala como principal elemento gráfico y un sistema de alto contraste que rompe con la estética corporativa habitual del sector.</p><p>El resultado prioriza el impacto tipográfico sobre la decoración: titulares enormes, jerarquía muy marcada y muy poco espacio para elementos accesorios.</p>',
+        roles: [
+            { label: 'Dirección de Arte', valor: 'Estudio Sants' },
+            { label: 'Diseño Web', valor: 'Estudio Sants' },
+            { label: 'Cliente', valor: 'Confidencial' },
+        ],
+        galeria: [
+            { url: 'PON-NOMBRE-IMAGEN-AQUI.png', caption: 'Home — propuesta tipográfica agresiva' },
+        ]
+    },
+    {
+        url: 'PON-NOMBRE-IMAGEN-AQUI.png',
+        titulo: 'Manea<br><em>Coffee</em>',
+        tags: ['Diseño Web', 'UI/UX', 'Gamificación'],
+        descripcion: 'Web gamificada para una marca catalana de café de especialidad. <strong>Suscripción con pase de temporada.</strong>',
+        stats: [{ valor: '1', label: 'Plataforma' }, { valor: 'Web', label: 'Formato' }, { valor: '2026', label: 'Producción' }],
+        indice: '08', year: '2026',
+        intro: 'Una web pensada como si fuera un videojuego para Manea, marca catalana de café de especialidad con modelo de suscripción.',
+        descLarga: '<p>Manea quería diferenciarse del resto de marcas de café de especialidad apostando por un lenguaje totalmente distinto: interfaz inspirada en videojuegos, con barras de progreso, niveles y un "pase de batalla" que el usuario va desbloqueando a medida que consume o se suscribe, dando acceso a cafés de gama más alta y ediciones limitadas.</p><p>El reto de diseño estuvo en equilibrar la estética gamer —tipografía pixelada, iconografía de HUD, colores saturados— con la calidez y el detalle artesanal que se espera de una marca de café de especialidad.</p>',
+        roles: [
+            { label: 'Diseño Web', valor: 'Estudio Sants' },
+            { label: 'UI/UX', valor: 'Estudio Sants' },
+            { label: 'Cliente', valor: 'Manea' },
+        ],
+        galeria: [
+            { url: 'PON-NOMBRE-IMAGEN-AQUI.png', caption: 'Home — interfaz estilo videojuego' },
+            { url: 'PON-NOMBRE-IMAGEN-AQUI.png', caption: 'Pase de batalla — niveles y recompensas de café' },
+            { url: 'PON-NOMBRE-IMAGEN-AQUI.png', caption: 'Panel de suscripción del usuario' },
         ]
     }
 ];
@@ -1189,9 +1227,9 @@ const proyectosFotografia = [
             { label: 'Proyecto', valor: 'Personal' },
         ],
         galeria: [
-            { url: 'poner nombre imagen aqui', caption: 'Frasco a contraluz sobre fondo rojo' },
-            { url: 'poner nombre imagen aqui', caption: 'Detalle de la etiqueta' },
-            { url: 'poner nombre imagen aqui', caption: 'Variación de encuadre' },
+            { url: 'fotos/zara.png', caption: 'Frasco a contraluz sobre fondo rojo' },
+            { url: 'fotos/zara2.png', caption: 'Frasco a contraluz sobre fondo azul' },
+            { url: 'fotos/zara3.png', caption: 'Frasco a contraluz sobre fondo verde' },
         ]
     },
     {
@@ -1302,7 +1340,8 @@ const proyectosFotografia = [
     const filtroDisenoMap = {
         editorial: [1, 2],
         publicidad: [3, 6],
-        branding: [4, 5]
+        branding: [4, 5],
+        web: [7, 8]
     };
     let filtrosDisenoActivos = new Set();
 
