@@ -1053,124 +1053,123 @@
     <script>
     gsap.registerPlugin(Draggable);
 
-    // Proyectos de DISEÑO (por defecto)
-    const proyectosDiseno = [
-        {
-            url: 'fotos/poster.png',
-            titulo: 'Nombre<br><em>Proyecto</em>',
-            tags: ['Branding', 'Identidad', 'Diseño'],
-            descripcion: 'Descripción breve del proyecto de diseño. <strong>Frase destacada.</strong>',
-            stats: [{ valor: '—', label: 'Dato 1' }, { valor: '—', label: 'Dato 2' }, { valor: '2026', label: 'Producción' }],
-            indice: '01', year: '2026',
-            intro: 'Introducción breve del proyecto.',
-            descLarga: '<p>Descripción larga del proyecto.</p>',
-            roles: [
-                { label: 'Dirección Creativa', valor: 'Estudio Sants' },
-                { label: 'Cliente', valor: 'Confidencial' },
-            ],
-            galeria: [
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 1' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 2' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 3' },
-            ]
-        },
-        {
-            url: 'fotos/pegatina.png',
-            titulo: 'Nombre<br><em>Proyecto</em>',
-            tags: ['Branding', 'Identidad', 'Diseño'],
-            descripcion: 'Descripción breve del proyecto de diseño. <strong>Frase destacada.</strong>',
-            stats: [{ valor: '—', label: 'Dato 1' }, { valor: '—', label: 'Dato 2' }, { valor: '2026', label: 'Producción' }],
-            indice: '02', year: '2026',
-            intro: 'Introducción breve del proyecto.',
-            descLarga: '<p>Descripción larga del proyecto.</p>',
-            roles: [
-                { label: 'Dirección Creativa', valor: 'Estudio Sants' },
-                { label: 'Cliente', valor: 'Confidencial' },
-            ],
-            galeria: [
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 1' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 2' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 3' },
-            ]
-        },
-        {
-            url: 'fotos/misto.jpg',
-            titulo: 'Nombre<br><em>Proyecto</em>',
-            tags: ['Branding', 'Identidad', 'Diseño'],
-            descripcion: 'Descripción breve del proyecto de diseño. <strong>Frase destacada.</strong>',
-            stats: [{ valor: '—', label: 'Dato 1' }, { valor: '—', label: 'Dato 2' }, { valor: '2026', label: 'Producción' }],
-            indice: '03', year: '2026',
-            intro: 'Introducción breve del proyecto.',
-            descLarga: '<p>Descripción larga del proyecto.</p>',
-            roles: [
-                { label: 'Dirección Creativa', valor: 'Estudio Sants' },
-                { label: 'Cliente', valor: 'Confidencial' },
-            ],
-            galeria: [
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 1' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 2' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 3' },
-            ]
-        },
-        {
-            url: 'fotos/petramora1.png',
-            titulo: 'Nombre<br><em>Proyecto</em>',
-            tags: ['Branding', 'Identidad', 'Diseño'],
-            descripcion: 'Descripción breve del proyecto de diseño. <strong>Frase destacada.</strong>',
-            stats: [{ valor: '—', label: 'Dato 1' }, { valor: '—', label: 'Dato 2' }, { valor: '2026', label: 'Producción' }],
-            indice: '04', year: '2026',
-            intro: 'Introducción breve del proyecto.',
-            descLarga: '<p>Descripción larga del proyecto.</p>',
-            roles: [
-                { label: 'Dirección Creativa', valor: 'Estudio Sants' },
-                { label: 'Cliente', valor: 'Confidencial' },
-            ],
-            galeria: [
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 1' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 2' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 3' },
-            ]
-        },
-        {
-            url: 'fotos/moali1.png',
-            titulo: 'Nombre<br><em>Proyecto</em>',
-            tags: ['Branding', 'Identidad', 'Diseño'],
-            descripcion: 'Descripción breve del proyecto de diseño. <strong>Frase destacada.</strong>',
-            stats: [{ valor: '—', label: 'Dato 1' }, { valor: '—', label: 'Dato 2' }, { valor: '2026', label: 'Producción' }],
-            indice: '05', year: '2026',
-            intro: 'Introducción breve del proyecto.',
-            descLarga: '<p>Descripción larga del proyecto.</p>',
-            roles: [
-                { label: 'Dirección Creativa', valor: 'Estudio Sants' },
-                { label: 'Cliente', valor: 'Confidencial' },
-            ],
-            galeria: [
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 1' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 2' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 3' },
-            ]
-        },
-        {
-            url: 'fotos/sangria.png',
-            titulo: 'Nombre<br><em>Proyecto</em>',
-            tags: ['Branding', 'Identidad', 'Diseño'],
-            descripcion: 'Descripción breve del proyecto de diseño. <strong>Frase destacada.</strong>',
-            stats: [{ valor: '—', label: 'Dato 1' }, { valor: '—', label: 'Dato 2' }, { valor: '2026', label: 'Producción' }],
-            indice: '06', year: '2026',
-            intro: 'Introducción breve del proyecto.',
-            descLarga: '<p>Descripción larga del proyecto.</p>',
-            roles: [
-                { label: 'Dirección Creativa', valor: 'Estudio Sants' },
-                { label: 'Cliente', valor: 'Confidencial' },
-            ],
-            galeria: [
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 1' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 2' },
-                { url: 'poner nombre imagen aqui', caption: 'Descripción de la imagen 3' },
-            ]
-        }
-    ];
-
+   // Proyectos de DISEÑO (por defecto)
+const proyectosDiseno = [
+    {
+        url: 'fotos/poster.png',
+        titulo: 'Estudos<br><em>Xaponeses</em>',
+        tags: ['Ilustración', 'Cartelería', 'Flash Day'],
+        descripcion: 'Serie de carteles ilustrados para una jornada de Flash Day. <strong>Bicho Verde Tattoo, Almería.</strong>',
+        stats: [{ valor: '6', label: 'Diseños' }, { valor: 'A2', label: 'Formato' }, { valor: '2026', label: 'Producción' }],
+        indice: '01', year: '2026',
+        intro: 'Una serie de carteles pensados para acompañar el Flash Day de Bicho Verde, un estudio de tatuaje en Almería.',
+        descLarga: '<p>El encargo partía de una fecha concreta: una jornada de Flash Day en la que el estudio quería comunicar su propuesta a través de piezas visuales expuestas en el propio local. Se optó por un lenguaje inspirado en la iconografía japonesa —soles, arcos y montañas reducidos a formas geométricas simples— trabajado con degradados y desenfoques que dialogan con la tradición del tatuaje oriental sin caer en la copia literal.</p><p>Cada cartel funciona como una composición independiente, pero juntos forman una secuencia visual pensada para el escaparate del estudio durante la jornada.</p>',
+        roles: [
+            { label: 'Dirección de Arte', valor: 'Estudio Sants' },
+            { label: 'Cliente', valor: 'Bicho Verde Tattoo' },
+        ],
+        galeria: [
+            { url: 'poner nombre imagen aqui', caption: 'Cartel 1 — composición geométrica con formas de sol y montaña' },
+            { url: 'poner nombre imagen aqui', caption: 'Cartel 2 — figura totémica en degradado rojo' },
+            { url: 'poner nombre imagen aqui', caption: 'Ambos carteles expuestos en el escaparate del estudio' },
+        ]
+    },
+    {
+        url: 'fotos/pegatina.png',
+        titulo: 'Camping<br><em>in Alaska</em>',
+        tags: ['Diseño Editorial', 'Tipografía', 'Música'],
+        descripcion: 'Pareja de carteles para el lanzamiento de un tema. <strong>Camping in Alaska.</strong>',
+        stats: [{ valor: '2', label: 'Carteles' }, { valor: '70x100', label: 'Formato' }, { valor: '2026', label: 'Producción' }],
+        indice: '02', year: '2026',
+        intro: 'Dos carteles diseñados para el lanzamiento de un nuevo tema de la banda Camping in Alaska.',
+        descLarga: '<p>El punto de partida fue puramente tipográfico: dos rótulos superpuestos en tensión, jugando con la ilegibilidad como recurso estético. La paleta violeta y naranja sobre negro busca un contraste directo, casi de cartel de festival, que funcione tanto impreso como en formato digital para redes.</p><p>La composición se pensó para generar impacto inmediato en feed, priorizando la mancha tipográfica por encima de la jerarquía de lectura tradicional.</p>',
+        roles: [
+            { label: 'Dirección Creativa', valor: 'Estudio Sants' },
+            { label: 'Cliente', valor: 'Camping in Alaska' },
+        ],
+        galeria: [
+            { url: 'poner nombre imagen aqui', caption: 'Cartel principal — tipografía superpuesta sobre fondo violeta' },
+            { url: 'poner nombre imagen aqui', caption: 'Versión alternativa para redes' },
+            { url: 'poner nombre imagen aqui', caption: 'Detalle de la composición tipográfica' },
+        ]
+    },
+    {
+        url: 'fotos/misto.jpg',
+        titulo: 'Misto<br><em>Magazine</em>',
+        tags: ['Diseño Editorial', 'Portadas', 'Revista Independiente'],
+        descripcion: 'Portadas para una revista independiente de tirada física. <strong>Misto Magazine, Barcelona.</strong>',
+        stats: [{ valor: '3', label: 'Portadas' }, { valor: '100%', label: 'Papel' }, { valor: '2026', label: 'Producción' }],
+        indice: '03', year: '2026',
+        intro: 'Tres portadas para Misto Magazine, una revista independiente de Barcelona que existe únicamente en papel.',
+        descLarga: '<p>Misto Magazine es una publicación sin presencia en redes sociales: su único canal es la tirada física, lo que condiciona todo el planteamiento visual hacia el objeto impreso. Cada portada se resuelve con una figura recortada a gran escala —un tiburón, una bailarina, un perfil— sobre un color plano, siguiendo una misma lógica compositiva que da coherencia a la serie sin repetir recursos.</p><p>La tipografía de cabecera se mantiene fija de número a número, actuando como ancla de identidad mientras la imagen cambia por completo en cada edición.</p>',
+        roles: [
+            { label: 'Dirección de Arte', valor: 'Estudio Sants' },
+            { label: 'Cliente', valor: 'Misto Magazine' },
+        ],
+        galeria: [
+            { url: 'poner nombre imagen aqui', caption: 'Portada 1 — silueta de tiburón sobre rojo' },
+            { url: 'poner nombre imagen aqui', caption: 'Portada 2 — figura en movimiento sobre azul' },
+            { url: 'poner nombre imagen aqui', caption: 'Portada 3 — perfil recortado sobre amarillo' },
+        ]
+    },
+    {
+        url: 'fotos/petramora1.png',
+        titulo: 'Campaña<br><em>Petramora</em>',
+        tags: ['Packaging', 'Dirección de Arte', 'Social Media'],
+        descripcion: 'Campaña integral de packaging y contenido para redes. <strong>Petramora.</strong>',
+        stats: [{ valor: '+15', label: 'Piezas' }, { valor: 'Feed IG', label: 'Formato' }, { valor: '2026', label: 'Producción' }],
+        indice: '04', year: '2026',
+        intro: 'Diseño de packaging, feed de Instagram y creatividades publicitarias para Petramora.',
+        descLarga: '<p>El encargo abarcó varios frentes: el rediseño del packaging de producto (con foco en las referencias de pollo de caserío), la planificación visual del feed de Instagram y un conjunto de creatividades para campaña publicitaria. Se trabajó una identidad tipográfica muy marcada, en mayúsculas y alto contraste, que funciona tanto en el envase físico como en formato digital.</p><p>El objetivo era transmitir origen y cercanía —producción de caserío, crianza al aire libre— sin perder un aire contemporáneo en el packaging.</p>',
+        roles: [
+            { label: 'Dirección de Arte', valor: 'Estudio Sants' },
+            { label: 'Cliente', valor: 'Petramora' },
+        ],
+        galeria: [
+            { url: 'poner nombre imagen aqui', caption: 'Packaging — etiqueta muslo de pollo de caserío' },
+            { url: 'poner nombre imagen aqui', caption: 'Creatividad para feed de Instagram' },
+            { url: 'poner nombre imagen aqui', caption: 'Sistema tipográfico aplicado al packaging' },
+        ]
+    },
+    {
+        url: 'fotos/moali1.png',
+        titulo: 'Moali<br><em>Explore</em>',
+        tags: ['Branding', 'Social Media', 'Cartelería'],
+        descripcion: 'Identidad visual y contenido para una agencia de viajes de experiencias. <strong>Moali Explore.</strong>',
+        stats: [{ valor: '2', label: 'Destinos' }, { valor: 'IG + OOH', label: 'Formato' }, { valor: '2026', label: 'Producción' }],
+        indice: '05', year: '2026',
+        intro: 'Publicaciones de Instagram y cartelería para Moali Explore, agencia especializada en viajes de experiencias por Filipinas e Indonesia.',
+        descLarga: '<p>Moali Explore organiza rutas de experiencia en el sudeste asiático, con foco en Filipinas e Indonesia. El trabajo consistió en diseñar carteles informativos por itinerario —con paradas, días y mapa de ruta— junto con una serie de publicaciones para Instagram que mantienen la misma paleta editorial y fotográfica en todos los destinos.</p><p>Se buscó un lenguaje visual sobrio, casi de guía de viajes, que diera protagonismo a la fotografía del destino por encima del recurso gráfico.</p>',
+        roles: [
+            { label: 'Dirección de Arte', valor: 'Estudio Sants' },
+            { label: 'Cliente', valor: 'Moali Explore' },
+        ],
+        galeria: [
+            { url: 'poner nombre imagen aqui', caption: 'Cartel de ruta — Indonesia: Dragones y Volcanes' },
+            { url: 'poner nombre imagen aqui', caption: 'Publicación de Instagram — destino Filipinas' },
+            { url: 'poner nombre imagen aqui', caption: 'Cartel expuesto en mobiliario urbano' },
+        ]
+    },
+    {
+        url: 'fotos/sangria.png',
+        titulo: 'Etiquetas<br><em>de Bebidas</em>',
+        tags: ['Packaging', 'Etiquetas', 'Fiverr'],
+        descripcion: 'Serie de etiquetas para bebidas artesanales, encargos gestionados a través de Fiverr. <strong>Clientes internacionales.</strong>',
+        stats: [{ valor: '+10', label: 'Etiquetas' }, { valor: 'Fiverr', label: 'Origen' }, { valor: '2026', label: 'Producción' }],
+        indice: '06', year: '2026',
+        intro: 'Encargos independientes de diseño de etiquetas para bebidas artesanales, gestionados a través de Fiverr.',
+        descLarga: '<p>Una serie de proyectos puntuales para pequeños productores de bebidas artesanales, cada uno con su propia identidad y sin relación entre sí más allá del canal de contratación. El reto en cada encargo era resolver una etiqueta funcional y atractiva en muy poco tiempo, partiendo de un briefing mínimo del cliente.</p><p>El resultado es un muestrario heterogéneo que sirve como carta de presentación de la versatilidad del estudio en packaging de pequeño formato.</p>',
+        roles: [
+            { label: 'Diseño', valor: 'Estudio Sants' },
+            { label: 'Cliente', valor: 'Varios (Fiverr)' },
+        ],
+        galeria: [
+            { url: 'poner nombre imagen aqui', caption: 'Etiqueta — Nektar Homemade Sangría' },
+            { url: 'poner nombre imagen aqui', caption: 'Etiqueta — proyecto Fiverr 2' },
+            { url: 'poner nombre imagen aqui', caption: 'Etiqueta — proyecto Fiverr 3' },
+        ]
+    }
+];
     // Proyectos de FOTOGRAFÍA
     const proyectosFotografia = [
         {
