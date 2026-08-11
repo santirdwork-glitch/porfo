@@ -708,9 +708,11 @@
         .footer-legal-copy span { color: rgba(228,72,0,0.55); }
         .footer-legal-links { display: flex; gap: 26px; }
         .footer-legal-link {
-            font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600;
-            letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.16);
-            cursor: none; transition: color 0.3s ease;
+    font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.16);
+    cursor: none; transition: color 0.3s ease;
+    text-decoration: none;
+}
         }
         .footer-legal-link:hover { color: rgba(255,255,255,0.45); }
 
@@ -1043,7 +1045,7 @@
             <div class="footer-legal-links">
                 <span class="footer-legal-link">Privacidad</span>
                 <span class="footer-legal-link">Cookies</span>
-                <span class="footer-legal-link">Aviso Legal</span>
+                <a class="footer-legal-link" href="legal.html">Aviso Legal</a>
             </div>
         </div>
     </footer>
